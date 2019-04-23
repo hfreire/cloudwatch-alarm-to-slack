@@ -4,8 +4,6 @@
 [![Coverage Status](https://coveralls.io/repos/github/hfreire/cloudwatch-alarm-to-slack/badge.svg?branch=master)](https://coveralls.io/github/hfreire/cloudwatch-alarm-to-slack?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/hfreire/cloudwatch-alarm-to-slack/badge.svg)](https://snyk.io/test/github/hfreire/cloudwatch-alarm-to-slack)
 [![](https://img.shields.io/github/release/hfreire/cloudwatch-alarm-to-slack.svg)](https://github.com/hfreire/cloudwatch-alarm-to-slack/releases)
-[![Version](https://img.shields.io/npm/v/cloudwatch-alarm-to-slack.svg)](https://www.npmjs.com/package/cloudwatch-alarm-to-slack)
-[![Downloads](https://img.shields.io/npm/dt/cloudwatch-alarm-to-slack.svg)](https://www.npmjs.com/package/cloudwatch-alarm-to-slack) 
 
 > 
 

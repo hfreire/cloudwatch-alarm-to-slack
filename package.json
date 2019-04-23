@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/hfreire/cloudwatch-alarm-to-slack#readme",
   "dependencies": {
-    "lodash": "4.17.4",
+    "lodash": "4.17.11",
     "request-on-steroids": "1.1.38"
   },
   "devDependencies": {
