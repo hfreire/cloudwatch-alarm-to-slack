@@ -1,0 +1,22 @@
+{
+  "Records": [
+    {
+      "EventSource": "aws:sns",
+      "EventVersion": "1.0",
+      "EventSubscriptionArn": "arn:aws:sns:eu-west-1:123456789:my-sns-topic:73a7ccdd-c155-429d-bc05-07a721eaa055",
+      "Sns": {
+        "Type": "Notification",
+        "MessageId": "24304ad5-11ae-484e-947b-3f2eccd8676a",
+        "TopicArn": "arn:aws:sns:eu-west-1:123456789:my-sns-topic",
+        "Subject": "ALARM: \"My error\" in EU - Ireland",
+        "Message": "{\"AlarmName\":\"My Error\",\"AlarmDescription\":\"Created from EC2 Console\",\"AWSAccountId\":\"123456789\",\"NewStateValue\":\"ALARM\",\"NewStateReason\":\"Threshold Crossed: 1 datapoint (3.0) was less than or equal to the threshold (4.0).\",\"StateChangeTime\":\"2019-04-22T00:00:00.000+0000\",\"Region\":\"EU - Ireland\",\"OldStateValue\":\"OK\",\"Trigger\":{\"MetricName\":\"HealthyHostCount\",\"Namespace\":\"AWS/ApplicationELB\",\"StatisticType\":\"Statistic\",\"Statistic\":\"MINIMUM\",\"Unit\":null,\"Dimensions\":[{\"name\":\"LoadBalancer\",\"value\":\"app/my-loadbalancer-name/my-targetgroup-id\"},{\"name\":\"TargetGroup\",\"value\":\"targetgroup/my-service/7c853bd38f6c8298\"}],\"Period\":300,\"EvaluationPeriods\":1,\"ComparisonOperator\":\"LessThanOrEqualToThreshold\",\"Threshold\":4.0,\"TreatMissingData\":\"\",\"EvaluateLowSampleCountPercentile\":\"\"}}",
+        "Timestamp": "2019-04-22T00:00:00.000Z",
+        "SignatureVersion": "1",
+        "Signature": "U1k2Lm/h3PiwvAxN40CUqZxdHWGlO04EjoLgaBAvfzMhIVsR1q2v1hyuHbCmyoMGVs3CTfbhcLmcFFvIuM4+8ilQLFFsI4lvd+kC0L5yUss84k0o14Fad9GXVXpqKpVRXaSTn9S+0WZSeQF8/+cyrtc6Gk1Em0SIcSJWWYJgIyVZm8HsTiOguvo2zp/9i+l5c4l+67fOP81sRNhydWT2ii1oL24t7XJGEcbNSS/EcDma3qSyNiw66KhLxDCkhB2ut9eXXkIhGN9/mpfMkrsHmCNhJuom8t/taQjfV8kpUnwgsZiyS9wSHD9YjMhjkzu35x4thNh8j3c+uzqqxNPOww==",
+        "SigningCertUrl": "https://sns.eu-west-1.amazonaws.com/SimpleNotificationService-b95095beb82e8f6a046b3aafc7f4149a.pem",
+        "UnsubscribeUrl": "https://sns.eu-west-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:eu-west-1:123456789:my-sns-topic:73a7ccdd-c155-429d-bc05-07a721eaa055",
+        "MessageAttributes": {}
+      }
+    }
+  ]
+}
