@@ -15,7 +15,7 @@ describe('Handler', () => {
   })
 
   describe('when handling a SNS event', () => {
-    const url = 'https://hooks.slack.com/services/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'
+    const url = 'https://my-test-url'
     const event = require('./sns-event-cloudwatch-notification.json')
 
     beforeAll(() => {
