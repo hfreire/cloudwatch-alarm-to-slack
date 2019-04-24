@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/hfreire/cloudwatch-alarm-to-slack.svg?branch=master)](https://travis-ci.org/hfreire/cloudwatch-alarm-to-slack)
 [![Coverage Status](https://coveralls.io/repos/github/hfreire/cloudwatch-alarm-to-slack/badge.svg?branch=master)](https://coveralls.io/github/hfreire/cloudwatch-alarm-to-slack?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/hfreire/cloudwatch-alarm-to-slack/badge.svg)](https://snyk.io/test/github/hfreire/cloudwatch-alarm-to-slack)
-[![](https://img.shields.io/github/release/hfreire/cloudwatch-alarm-to-slack.svg)](https://github.com/hfreire/cloudwatch-alarm-to-slack/releases) [![Greenkeeper badge](https://badges.greenkeeper.io/hfreire/cloudwatch-alarm-to-slack.svg)](https://greenkeeper.io/)
+[![](https://img.shields.io/github/release/hfreire/cloudwatch-alarm-to-slack.svg)](https://github.com/hfreire/cloudwatch-alarm-to-slack/releases)
 
 > 
 
