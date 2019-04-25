@@ -1,5 +1,5 @@
 .idea
-lib
+build
 coverage
 node_modules
 *.iml

@@ -33,7 +33,7 @@ package:
 
 functions:
   handler:
-    handler: lib/index.handler
+    handler: build/index.handler
     events:
       - sns: ${file(share/terraform/terraform.json):aws_sns_topic_arn}
 

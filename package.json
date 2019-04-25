@@ -74,7 +74,7 @@
     "analyzeCommits": "simple-commit-message"
   },
   "scripts": {
-    "babel": "./node_modules/.bin/babel ./src -d ./lib",
+    "babel": "./node_modules/.bin/babel ./src -d ./build",
     "eslint": "./node_modules/.bin/eslint --ext .json --ext .js .",
     "jest": "./node_modules/.bin/jest",
     "snyk:test": "./node_modules/.bin/snyk test",
@@ -88,13 +88,13 @@
     "serverless:undeploy": "./node_modules/.bin/serverless remove -s production",
     "serverless:invoke": "npm run compile && ./node_modules/.bin/serverless invoke -l -f handler -s production",
     "serverless:invoke:local": "npm run compile && ./node_modules/.bin/serverless invoke local -f handler",
-    "clean": "rm -rf lib coverage",
+    "clean": "rm -rf build coverage",
     "lint": "npm run eslint",
     "prepare": "npm run snyk:protect",
-    "test": "npm run clean && npm run lint && npm run jest",
-    "compile": "npm run clean && npm run babel",
+    "test": "rm -rf coverage && npm run lint && npm run jest",
+    "compile": "npm run babel",
     "commit": "./node_modules/.bin/commit-wizard",
-    "build": "npm run compile",
+    "build": "rm -rf build && npm run compile",
     "deploy": "npm run terraform:deploy && npm run serverless:deploy"
   }
 }
