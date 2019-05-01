@@ -1,6 +1,6 @@
 {
   "name": "cloudwatch-alarm-to-slack",
-  "description": "",
+  "description": "A :star: lambda for sending your CloudWatch :alarm_clock: alarms into Slack",
   "version": "0.0.0",
   "engines": {
     "node": ">= 10.11"
