@@ -4,11 +4,15 @@ frameworkVersion: ">=1.1.0 <2.0.0"
 
 provider:
   name: aws
+  stage: ${opt:stage, 'production'}
   runtime: nodejs8.10
   region: ${file(share/terraform/terraform.json):aws_region}
   memorySize: 128
+  versionFunctions: false
   environment:
     SLACK_WEBHOOK_URL: ${env:SLACK_WEBHOOK_URL}
+  tracing:
+    lambda: true
 
 plugins:
   - serverless-plugin-include-dependencies
