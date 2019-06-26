@@ -1,18 +1,12 @@
 terraform {
-  required_version = ">= 0.9.3, != 0.9.5"
+  required_version = ">= 0.12"
 
-  backend "s3" {}
+  backend "s3" {
+  }
 }
 
-provider "aws" {
-  region = "${var.aws_region}"
-  version = "1.60"
-}
+module "cloudwatch-alarm-to-slack" {
+  source = "github.com/antifragile-systems/antifragile-serverless"
 
-data "aws_sns_topic" "selected" {
-  name = "${var.infrastructure_name}"
-}
-
-data "aws_cloudwatch_log_group" "selected" {
-  name = "${var.infrastructure_name}"
+  infrastructure_name = var.infrastructure_name
 }
