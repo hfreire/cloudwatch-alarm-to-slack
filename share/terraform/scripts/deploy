@@ -1,11 +1,30 @@
 #!/usr/bin/env bash
 
-[ -z ${NAME-} ] && exit 1
+TF_IN_AUTOMATION=true
+TF_PLAN=terraform.tfplan
 
-VERSION=$(if [ -z ${VERSION-} ]; then echo $(if [ -z ${DOCKER_TAG-} ]; then echo latest; else echo $DOCKER_TAG; fi); else echo $VERSION; fi)
-API_KEYS=$(if [ -z ${API_KEYS-} ]; then echo "[]"; else echo -n "[" $(IFS=',' read -ra keys <<< "$API_KEYS"; for key in ${keys[@]}; do echo -n "\"$key\","; done); echo -n "]"; fi)
+PROGNAME=$(basename $0)
 
 pushd $(cd -P -- "$(dirname -- "$0")" && pwd -P)/..
+
+function clean_before_exit {
+  [ -f ${TF_PLAN} ] && rm -f $TF_PLAN
+
+  popd
+}
+
+function error_and_exit {
+	echo "${PROGNAME}: ${1:-"Unknown error"}" 1>&2
+
+	exit 1
+}
+
+trap 'error_and_exit "${LINENO}: Unknown error"' ERR
+trap clean_before_exit EXIT
+
+[ -z ${NAME-} ] && error_and_exit "$LINENO: environment variable NAME is not set."
+
+[ -f env.sh ] && { set -a; . env.sh; set +a; }
 
 [ -z ${ANTIFRAGILE_STATE_AWS_REGION-} ] || [ -z ${ANTIFRAGILE_STATE_AWS_S3_BUCKET-} ] || [ -z ${ANTIFRAGILE_STATE_AWS_DYNAMODB_TABLE-} ] || \
 terraform init -upgrade \
@@ -13,23 +32,16 @@ terraform init -upgrade \
 -backend-config="bucket=${ANTIFRAGILE_STATE_AWS_S3_BUCKET}" \
 -backend-config="key=${NAME}.tfstate" \
 -backend-config="encrypt=true" \
--backend-config="dynamodb_table=${ANTIFRAGILE_STATE_AWS_DYNAMODB_TABLE}" || exit 1
+-backend-config="dynamodb_table=${ANTIFRAGILE_STATE_AWS_DYNAMODB_TABLE}" || error_and_exit "$LINENO: terraform initialization failed."
 
-terraform get -update=true || exit 1
+terraform get -update=true || error_and_exit "$LINENO: terraform get failed."
 
-terraform taint -module=${NAME}.cluster.services.tasks aws_ecs_task_definition.antifragile-service
+[ -f ./pre-deploy.sh ] && . ./pre-deploy.sh
 
-terraform plan \
--var "version=${VERSION}" \
--var "docker_repo=${DOCKER_REPO}" \
--var "domain_name=${ANTIFRAGILE_INFRASTRUCTURE_DOMAIN_NAME}" \
--var "api_keys=${API_KEYS}" \
--out terraform.tfplan || exit 1
+terraform plan -input=false -out $TF_PLAN -target=${TF_TARGET:-"module.${NAME}"} || error_and_exit "$LINENO: terraform plan failed."
 
-terraform apply -auto-approve terraform.tfplan || exit 1
+terraform apply -input=false -auto-approve $TF_PLAN || error_and_exit "$LINENO: terraform apply failed."
 
-terraform output -json | jq 'with_entries(.value |= .value)' > terraform.json || exit 1
-
-popd
+[ -f ./post-deploy.sh ] && . ./post-deploy.sh
 
 exit 0
