@@ -17,7 +17,7 @@
   "homepage": "https://github.com/hfreire/cloudwatch-alarm-to-slack#readme",
   "dependencies": {
     "lodash": "4.17.15",
-    "request-on-steroids": "1.1.59"
+    "request-on-steroids": "1.1.60"
   },
   "devDependencies": {
     "babel-cli": "6.26.0",
