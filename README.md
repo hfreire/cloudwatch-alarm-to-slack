@@ -1,6 +1,7 @@
 # A :star: lambda for sending your CloudWatch :alarm_clock: alarms into Slack
 
-[![Build Status](https://travis-ci.org/hfreire/cloudwatch-alarm-to-slack.svg?branch=master)](https://travis-ci.org/hfreire/cloudwatch-alarm-to-slack)
+[![](https://github.com/hfreire/cloudwatch-alarm-to-slack/workflows/ci/badge.svg)](https://github.com/hfreire/cloudwatch-alarm-to-slack/actions?workflow=ci)
+[![](https://github.com/hfreire/cloudwatch-alarm-to-slack/workflows/cd/badge.svg)](https://github.com/hfreire/cloudwatch-alarm-to-slack/actions?workflow=cd)
 [![Coverage Status](https://coveralls.io/repos/github/hfreire/cloudwatch-alarm-to-slack/badge.svg?branch=master)](https://coveralls.io/github/hfreire/cloudwatch-alarm-to-slack?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/hfreire/cloudwatch-alarm-to-slack/badge.svg)](https://snyk.io/test/github/hfreire/cloudwatch-alarm-to-slack)
 [![](https://img.shields.io/github/release/hfreire/cloudwatch-alarm-to-slack.svg)](https://github.com/hfreire/cloudwatch-alarm-to-slack/releases)

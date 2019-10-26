@@ -21,3 +21,9 @@ output "aws_security_group_ids" {
 
   sensitive = true
 }
+
+output "aws_sns_topic_arn" {
+  value = module.cloudwatch-alarm-to-slack.aws_sns_topic_arn
+
+  sensitive = true
+}
