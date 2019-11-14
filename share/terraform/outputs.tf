@@ -27,3 +27,9 @@ output "aws_sns_topic_arn" {
 
   sensitive = true
 }
+
+output "aws_iam_role_arn" {
+  value = data.aws_iam_role.selected.arn
+
+  sensitive = true
+}

@@ -9,6 +9,7 @@ provider:
   region: ${file(share/terraform/terraform.json):aws_region}
   memorySize: 128
   versionFunctions: false
+  role: ${file(share/terraform/terraform.json):aws_iam_role_arn}
   environment:
     SLACK_WEBHOOK_URL: ${env:SLACK_WEBHOOK_URL}
   tracing:
