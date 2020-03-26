@@ -6,7 +6,7 @@ terraform {
 }
 
 provider "aws" {
-  version = "2.14.0"
+  version = "2.54.0"
 
   region = var.aws_region
 }
@@ -18,6 +18,8 @@ module "cloudwatch-alarm-to-slack" {
   name = var.name
 
   aws_region = var.aws_region
+  state_aws_region = var.state_aws_region
+  state_aws_s3_bucket = var.state_aws_s3_bucket
 }
 
 data "aws_caller_identity" "current" {
@@ -67,3 +69,33 @@ resource "aws_iam_role_policy" "cloudwatch-alarm-to-slack" {
 }
 EOF
 }
+
+data "aws_sns_topic" "selected" {
+  name = var.infrastructure_name
+}
+
+resource "aws_cloudwatch_metric_alarm" "cloudwatch-alarm-to-slack" {
+  alarm_name = "${var.name} error count"
+
+  metric_name = "Errors"
+  namespace = "AWS/Lambda"
+
+  dimensions = {
+    FunctionName = "cloudwatch-alarm-to-slack-production-handler"
+  }
+
+  threshold = 1
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods = 1
+  period = 60
+  statistic = "Sum"
+  treat_missing_data = "notBreaching"
+
+  alarm_actions = [
+    data.aws_sns_topic.selected.arn
+  ]
+  ok_actions = [
+    data.aws_sns_topic.selected.arn
+  ]
+}
+

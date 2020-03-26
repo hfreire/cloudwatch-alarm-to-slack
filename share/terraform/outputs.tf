@@ -33,3 +33,9 @@ output "aws_iam_role_arn" {
 
   sensitive = true
 }
+
+output "aws_s3_bucket" {
+  value = module.cloudwatch-alarm-to-slack.aws_s3_bucket
+
+  sensitive = true
+}

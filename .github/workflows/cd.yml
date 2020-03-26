@@ -43,3 +43,5 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           TF_VAR_aws_region: ${{ secrets.TF_VAR_aws_region }}
+          TF_VAR_state_aws_s3_bucket: ${{ secrets.ANTIFRAGILE_STATE_AWS_S3_BUCKET }}
+          TF_VAR_state_aws_region: ${{ secrets.ANTIFRAGILE_STATE_AWS_REGION }}
