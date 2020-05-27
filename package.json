@@ -20,7 +20,7 @@
     "request-on-steroids": "1.1.73"
   },
   "devDependencies": {
-    "@babel/cli": "7.10.0",
+    "@babel/cli": "7.10.1",
     "@babel/core": "7.9.6",
     "@babel/preset-env": "7.10.0",
     "coveralls": "3.1.0",
